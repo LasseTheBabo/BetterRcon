@@ -1,4 +1,4 @@
-package org.lpt;
+package org.lpt.betterrcon;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
