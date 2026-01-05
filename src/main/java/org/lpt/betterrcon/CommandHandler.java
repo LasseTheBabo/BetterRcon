@@ -8,10 +8,14 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.lpt.util.rcon.MessageHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static org.lpt.betterrcon.BetterRcon.LOGGER;
 
 public class CommandHandler implements MessageHandler {
     private final MinecraftServer server;
@@ -22,12 +26,14 @@ public class CommandHandler implements MessageHandler {
 
     @Override
     public String[] handleMessage(String s) {
+        LOGGER.info("Received command: {}", s);
+
         String playerName = "Rcon";
         CommandSourceStack virtualPlayerSource = new CommandSourceStack(
                 CommandSource.NULL,
                 Vec3.atCenterOf(BlockPos.ZERO),
                 Vec2.ZERO,
-                server.getLevel(Level.OVERWORLD),
+                Objects.requireNonNull(server.getLevel(Level.OVERWORLD)),
                 4,
                 playerName,
                 Component.literal(playerName),
@@ -38,7 +44,7 @@ public class CommandHandler implements MessageHandler {
         List<String> output = new ArrayList<>();
         virtualPlayerSource = virtualPlayerSource.withSource(new CommandSource() {
             @Override
-            public void sendSystemMessage(Component component) {
+            public void sendSystemMessage(@NotNull Component component) {
                 output.add(component.getString());
             }
 
