@@ -19,7 +19,7 @@ public class ServerEvents {
             return;
 
         try {
-            rconServer = new RconServer(25570, "minceraft", new CommandHandler(event.getServer()));
+            rconServer = new RconServer(25570, "minecraft", new CommandHandler(event.getServer()));
             rconServer.open();
         } catch (Exception e) {
             LOGGER.error("Failed starting RconServer: {}", e.getMessage());
