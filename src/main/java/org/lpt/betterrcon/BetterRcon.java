@@ -22,7 +22,7 @@ public class BetterRcon {
     public static final String MODID = "betterrcon";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    private static RconServer rconServer;
+    public static RconServer rconServer;
 
     public BetterRcon(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
