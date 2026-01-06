@@ -1,4 +1,4 @@
-package org.lpt.betterrcon;
+package org.lpt.betterrcon.handler;
 
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
