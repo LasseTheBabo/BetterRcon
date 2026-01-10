@@ -29,11 +29,11 @@ public class Config {
                 .define("command_permission", Commands.LEVEL_OWNERS);
 
         RCON_PLAYER_PERMISSION = builder
-                .comment("Permission level for the virtual rcon player")
+                .comment("Permission level for the virtual RCON player")
                 .define("rcon_player_permission", Commands.LEVEL_ADMINS);
         RCON_PLAYER_NAME = builder
-                .comment("Name for the virtual rcon player")
-                .define("rcon_player_name", "BetterRcon");
+                .comment("Name for the virtual RCON player")
+                .define("rcon_player_name", "RCON");
 
         builder.pop();
 

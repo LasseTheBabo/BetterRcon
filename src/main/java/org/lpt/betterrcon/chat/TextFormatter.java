@@ -6,10 +6,10 @@ import net.minecraft.network.chat.MutableComponent;
 
 public class TextFormatter {
     public static MutableComponent failed(String text) {
-        return Component.literal(text).withStyle(style -> style.withColor(ChatFormatting.RED));
+        return Component.literal(text).withStyle(ChatFormatting.RED);
     }
 
     public static MutableComponent success(String text) {
-        return Component.literal(text).withStyle(style -> style.withColor(ChatFormatting.GREEN));
+        return Component.literal(text).withStyle(ChatFormatting.GREEN);
     }
 }
