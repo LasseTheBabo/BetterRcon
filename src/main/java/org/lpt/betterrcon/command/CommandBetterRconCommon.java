@@ -11,7 +11,7 @@ import net.minecraft.network.chat.MutableComponent;
 import org.lpt.betterrcon.BetterRcon;
 import org.lpt.betterrcon.Config;
 
-public class CommandBetterRcon {
+public class CommandBetterRconCommon {
     public static LiteralArgumentBuilder<CommandSourceStack> register() {
         return Commands.literal("betterrcon")
                 .requires(source -> source.hasPermission(Config.COMMAND_PERMISSION.get()))

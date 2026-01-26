@@ -6,12 +6,12 @@ import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lpt.betterrcon.BetterRcon;
-import org.lpt.betterrcon.command.CommandBetterRcon;
+import org.lpt.betterrcon.command.CommandBetterRconCommon;
 
 import static org.lpt.betterrcon.BetterRcon.*;
 
 @Mod.EventBusSubscriber(modid = BetterRcon.MODID)
-public class EventHandler {
+public class CommonModEvents {
     @SubscribeEvent
     public static void onServerStarted(ServerStartedEvent event) {
         startRconServer(event.getServer());
@@ -24,6 +24,6 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
-        event.getDispatcher().register(CommandBetterRcon.register());
+        event.getDispatcher().register(CommandBetterRconCommon.register());
     }
 }
