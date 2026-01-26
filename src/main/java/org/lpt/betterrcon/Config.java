@@ -25,7 +25,7 @@ public class Config {
                 .define("password", "Ch4ng3-M3");
 
         COMMAND_PERMISSION = builder
-                .comment("Required permission for commands")
+                .comment("Required permission for server commands")
                 .define("command_permission", Commands.LEVEL_OWNERS);
 
         RCON_PLAYER_PERMISSION = builder
