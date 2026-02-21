@@ -13,6 +13,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'com.github.johnrengelman.shadow' version '8.0.0'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -86,13 +87,38 @@ repositories {
     maven { url = "https://jitpack.io" }
 }
 
+configurations {
+    shadowLibs {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    implementation "com.github.LasseTheBabo:LPT-Utilities:v1.5"
+    compileOnly "com.github.LasseTheBabo:LPT-Utilities:v2.0-fixed"
+    shadowLibs "com.github.LasseTheBabo:LPT-Utilities:v2.0-fixed"
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
 
+tasks.named('shadowJar') {
+    archiveClassifier.set('') // remove -all suffix
+    from sourceSets.main.output
+    configurations = [project.configurations.shadowLibs] // your relocatable dependencies
+    relocate 'org.lpt.util', 'org.lpt.betterrcon.libs.util'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    finalizedBy 'reobfJar' // make Forge reobfuscate the shadow jar
+}
+
+tasks.named('jar') {
+    enabled = false
+}
+
+tasks.named('build') {
+    dependsOn shadowJar
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -120,9 +146,6 @@ tasks.named('jar', Jar).configure {
                     "Implementation-Vendor"   : mod_authors,
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")])
     }
-
-    // This is the preferred method to reobfuscate your jar file
-    finalizedBy 'reobfJar'
 }
 
 tasks.withType(JavaCompile).configureEach {

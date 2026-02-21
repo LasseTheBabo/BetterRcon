@@ -11,6 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.lpt.betterrcon.chat.TextFormatter;
 import org.lpt.betterrcon.handler.CommandHandler;
+import org.lpt.util.Util;
 import org.lpt.util.rcon.RconServer;
 import org.slf4j.Logger;
 
@@ -31,6 +32,8 @@ public class BetterRcon {
         MinecraftForge.EVENT_BUS.register(this);
 
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        Util.LOGGER = new UtilLogger();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
