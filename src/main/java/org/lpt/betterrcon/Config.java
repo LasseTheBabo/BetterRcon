@@ -19,7 +19,7 @@ public class Config {
         builder.push("general");
         RCON_PORT = builder
                 .comment("Server port")
-                .defineInRange("port", 25570, 1024, 40000);
+                .defineInRange("port", 25570, 1, 65535);
         RCON_PASSWORD = builder
                 .comment("Server password")
                 .define("password", "Ch4ng3-M3");

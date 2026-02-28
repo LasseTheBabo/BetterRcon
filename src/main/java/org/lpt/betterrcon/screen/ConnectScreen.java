@@ -62,7 +62,7 @@ public class ConnectScreen extends Screen {
 
             try {
                 int value = Integer.parseInt(text);
-                return value >= 1024 && value <= 40000;
+                return value >= 1 && value <= 65535;
             } catch (NumberFormatException e) {
                 return false;
             }
