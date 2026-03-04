@@ -91,8 +91,8 @@ configurations {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    implementation "com.github.LasseTheBabo:LPT-Utilities:v2.0-fix2"
-    shadowLibs "com.github.LasseTheBabo:LPT-Utilities:v2.0-fix2"
+    implementation "com.github.LasseTheBabo:LPT-Utilities:v2.2.0"
+    shadowLibs "com.github.LasseTheBabo:LPT-Utilities:v2.2.0"
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
